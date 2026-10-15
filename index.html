@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB UI Kit Pro - Landing Page</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bs-primary: #0061f2;
+            --bs-primary-rgb: 0, 97, 242;
+            --bs-secondary: #6900c7;
+            --bs-dark: #212832;
+            --bs-light-bg: #f2f6fc;
+            --font-family-sans-serif: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family-sans-serif);
+            color: #4a5568;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--bs-primary) !important;
+            font-size: 1.25rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #4a5568 !important;
+            margin: 0 0.5rem;
+        }
+        .nav-link:hover {
+            color: var(--bs-primary) !important;
+        }
+
+        /* Custom Primary Button */
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 97, 242, 0.2);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+        .btn-primary:hover {
+            background-color: #0052cc;
+            border-color: #0052cc;
+            transform: translateY(-2px);
+            box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 97, 242, 0.3);
+        }
+        
+        .btn-outline-primary {
+            color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            font-weight: 600;
+            border-radius: 0.5rem;
+        }
+        .btn-outline-primary:hover {
+            background-color: rgba(0, 97, 242, 0.1);
+            color: var(--bs-primary);
+        }
+        /* Hero Section */
+        .hero-section {
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+            background-color: #ffffff;
+            position: relative;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--bs-dark);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #69707a;
+            margin-bottom: 2rem;
+        }
+
+        /* SVG Placeholder / Illustration Style */
+        .hero-illustration {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 1rem 3rem rgba(0,0,0,0.05);
+        }
+
+        /* Wave Divider */
+        .wave-divider {
+            position: relative;
+            bottom: -1px;
+            width: 100%;
+            height: 100px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+        .wave-divider svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Cards & Hover Effects */
+        .section-light {
+            background-color: var(--bs-light-bg);
+            padding: 5rem 0;
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--bs-dark);
+            margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+            color: #69707a;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .hover-lift {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: none;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.05);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 1rem 2rem 0 rgba(33, 40, 50, 0.1) !important;
+            cursor: pointer;
+        }
+        .card-body-custom {
+            padding: 1.5rem;
+            text-align: center;
+            background: white;
+        }
+        .card-img-placeholder {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Badge Custom */
+        .badge-soft-primary {
+            background-color: rgba(0, 97, 242, 0.15);
+            color: var(--bs-primary);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* List Groups (Inner Pages) */
+        .list-group-item {
+            border: none;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            color: #4a5568;
+            border-radius: 0.5rem !important;
+            margin-bottom: 0.5rem;
+            background-color: white;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.05);
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .list-group-item:hover {
+            background-color: var(--bs-primary);
+            color: white !important;
+            transform: translateX(5px);
+        }
+        .list-group-item:hover i {
+            color: white !important;
+        }
+
+        /* Statistics Section */
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--bs-dark);
+            margin-bottom: 0.5rem;
+        }
+        .stat-text {
+            color: #69707a;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bs-light-bg);
+            padding: 5rem 0 2rem;
+            border-top: 1px solid #e3e6ec;
+        }
+        .footer-heading {
+            font-weight: 700;
+            color: var(--bs-dark);
+            margin-bottom: 1.5rem;
+        }
+        .footer-link {
+            color: #69707a;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.75rem;
+            transition: color 0.2s;
+        }
+        .footer-link:hover {
+            color: var(--bs-primary);
+        }
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: rgba(33, 40, 50, 0.05);
+            color: var(--bs-dark);
+            margin-right: 0.5rem;
+            transition: all 0.2s;
+        }
+        .social-icon:hover {
+            background-color: var(--bs-primary);
+            color: white;
+        }
+
+        /* Custom Toast Z-index */
+        .toast-container {
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast Notification Container (Alternative to Alert) -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-4">
+        <div id="interactionToast" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <span id="toastMessage">تم الضغط على الزر بنجاح!</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="bi bi-layers-fill me-2 fs-3"></i> SB UI Kit Pro
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#landings">Landings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pages">Pages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#documentation">Documentation</a></li>
+                </ul>
+                <button class="btn btn-primary px-4 rounded-pill interactive-btn" data-action="شراء النسخة الاحترافية">
+                    Buy Now <i class="bi bi-arrow-right ms-2"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center text-lg-start">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="hero-title">Build your next project faster with SB UI Kit Pro</h1>
+                    <p class="hero-subtitle">Welcome to SB UI Kit Pro, a toolkit for building beautiful web interfaces, created by the development team at Start Bootstrap.</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+                        <button class="btn btn-primary btn-lg interactive-btn" data-action="البدء الآن">
+                            Get Started
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg interactive-btn" data-action="معرفة المزيد">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- High Quality SVG Illustration Placeholder -->
+                    <svg class="hero-illustration" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+                        <rect width="800" height="600" fill="#f8f9fa" rx="20"/>
+                        <!-- Desk -->
+                        <path d="M 100 450 L 700 450 L 700 480 L 100 480 Z" fill="#e9ecef"/>
+                        <path d="M 150 480 L 170 550 L 130 550 Z M 650 480 L 670 550 L 630 550 Z" fill="#ced4da"/>
+                        <!-- Monitor -->
+                        <rect x="250" y="250" width="300" height="180" rx="10" fill="#343a40"/>
+                        <rect x="260" y="260" width="280" height="150" fill="#e9ecef"/>
+                        <path d="M 370 430 L 430 430 L 440 450 L 360 450 Z" fill="#adb5bd"/>
+                        <!-- Chart on monitor -->
+                        <path d="M 280 380 L 320 310 L 380 340 L 430 280 L 480 330 L 520 290" fill="none" stroke="#0061f2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- Person placeholder -->
+                        <circle cx="400" cy="180" r="45" fill="#ffc107"/>
+                        <path d="M 330 250 Q 400 200 470 250 L 480 350 L 320 350 Z" fill="#0061f2"/>
+                        <!-- Decorative shapes -->
+                        <circle cx="650" cy="150" r="30" fill="#6900c7" opacity="0.8"/>
+                        <rect x="100" y="100" width="50" height="50" rx="10" fill="#198754" opacity="0.8"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave SVG Divider -->
+    <div class="wave-divider">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#f2f6fc" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <!-- Landing Pages Section -->
+    <section id="landings" class="section-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge badge-soft-primary mb-3">Landings</span>
+                <h2 class="section-title">Landing Pages</h2>
+                <p class="section-subtitle">When you purchase this UI Kit, you get access to a robust suite of powerful landing page templates.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Generate 12 Cards -->
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب Corporate">
+                        <img src="https://placehold.co/600x400/0061f2/ffffff?text=Corporate" class="card-img-placeholder" alt="Corporate">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">Corporate</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب App Showcase">
+                        <img src="https://placehold.co/600x400/6900c7/ffffff?text=App+Showcase" class="card-img-placeholder" alt="App">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">App Showcase</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب SaaS">
+                        <img src="https://placehold.co/600x400/0dcaf0/ffffff?text=SaaS" class="card-img-placeholder" alt="SaaS">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">Software / SaaS</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب Agency">
+                        <img src="https://placehold.co/600x400/212832/ffffff?text=Agency" class="card-img-placeholder" alt="Agency">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">Agency</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب Lead Generation">
+                        <img src="https://placehold.co/600x400/6f42c1/ffffff?text=Lead+Gen" class="card-img-placeholder" alt="Lead Gen">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">Lead Generation</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب Personal">
+                        <img src="https://placehold.co/600x400/e83e8c/ffffff?text=Personal" class="card-img-placeholder" alt="Personal">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">Personal</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 7 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب Directory">
+                        <img src="https://placehold.co/600x400/fd7e14/ffffff?text=Directory" class="card-img-placeholder" alt="Directory">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">Directory</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 8 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب Real Estate">
+                        <img src="https://placehold.co/600x400/198754/ffffff?text=Real+Estate" class="card-img-placeholder" alt="Real Estate">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">Real Estate</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 9 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب Course">
+                        <img src="https://placehold.co/600x400/0dcaf0/ffffff?text=Course" class="card-img-placeholder" alt="Course">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">Course</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 10 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب Classifieds">
+                        <img src="https://placehold.co/600x400/0061f2/ffffff?text=Classifieds" class="card-img-placeholder" alt="Classifieds">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">Classifieds</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 11 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب Startup">
+                        <img src="https://placehold.co/600x400/343a40/ffffff?text=Startup" class="card-img-placeholder" alt="Startup">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">Startup</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 12 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="فتح قالب Portfolio">
+                        <img src="https://placehold.co/600x400/6900c7/ffffff?text=Portfolio" class="card-img-placeholder" alt="Portfolio">
+                        <div class="card-body-custom">
+                            <h5 class="fw-bold mb-0">Portfolio</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="wave-divider" style="transform: rotate(180deg); background: var(--bs-light-bg);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <!-- Inner Pages Section -->
+    <section id="pages" class="py-5" style="background: #ffffff;">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="badge badge-soft-primary mb-3">Pages</span>
+                <h2 class="section-title">Inner Pages</h2>
+                <p class="section-subtitle">A collection of carefully crafted pages to suit all your business needs.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Group 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3 text-dark">Company</h5>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة About Us">
+                            About Us <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Pricing">
+                            Pricing <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Contact">
+                            Contact <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Terms">
+                            Terms <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Group 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3 text-dark">Careers</h5>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Careers List">
+                            Careers List <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Position Details">
+                            Position Details <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Application">
+                            Application <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Group 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3 text-dark">Blog</h5>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Blog Overview">
+                            Overview <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Blog Post">
+                            Post <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Blog Archive">
+                            Archive <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Group 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3 text-dark">Portfolio</h5>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Grid Portfolio">
+                            Grid <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Masonry Portfolio">
+                            Masonry <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action interactive-btn" data-action="صفحة Project Detail">
+                            Project <i class="bi bi-chevron-right text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Header Examples Section -->
+    <section class="section-light py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="badge badge-soft-primary mb-3">Components</span>
+                <h2 class="section-title">Header Examples</h2>
+                <p class="section-subtitle">Customize the header to fit your brand seamlessly with included components.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Example 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="معاينة Basic Header">
+                        <img src="https://placehold.co/600x300/0061f2/ffffff?text=Basic+Header" class="card-img-placeholder" style="height: 150px;" alt="Basic">
+                        <div class="card-body-custom py-3">
+                            <h6 class="fw-bold mb-0">Basic Header</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Example 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="معاينة Header with Graphic">
+                        <img src="https://placehold.co/600x300/6900c7/ffffff?text=With+Graphic" class="card-img-placeholder" style="height: 150px;" alt="Graphic">
+                        <div class="card-body-custom py-3">
+                            <h6 class="fw-bold mb-0">Graphic Header</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Example 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card hover-lift h-100 interactive-btn" data-action="معاينة Header with Search">
+                        <img src="https://placehold.co/600x300/198754/ffffff?text=With+Search" class="card-img-placeholder" style="height: 150px;" alt="Search">
+                        <div class="card-body-custom py-3">
+                            <h6 class="fw-bold mb-0">Search Header</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="documentation" class="py-5 bg-white text-center">
+        <div class="container py-5">
+            <div class="mb-5">
+                <h2 class="section-title">UI Kit Statistics</h2>
+                <p class="section-subtitle">Numbers that showcase the power and scalability of our framework.</p>
+            </div>
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="stat-number">70+</div>
+                    <div class="stat-text">Customized HTML pages created to fit every possible scenario.</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-number">35+</div>
+                    <div class="stat-text">Fully designed layout variations to jumpstart your development.</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-text">Individual UI components mapped to Bootstrap variables.</div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary btn-lg px-5 rounded-pill interactive-btn" data-action="تصفح ملفات الـ Documentation">
+                View Documentation <i class="bi bi-file-earmark-text ms-2"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-3">
+                    <h5 class="footer-heading d-flex align-items-center">
+                        <i class="bi bi-layers-fill me-2 text-primary"></i> SB UI Kit Pro
+                    </h5>
+                    <p class="text-muted mb-4">Design made easy. Build beautiful, modern websites faster with our UI Kit.</p>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon interactive-btn" data-action="زيارة تويتر"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon interactive-btn" data-action="زيارة فيسبوك"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon interactive-btn" data-action="زيارة جيت هاب"><i class="bi bi-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1 col-md-4">
+                    <h6 class="footer-heading">Product</h6>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Landing">Landing</a>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Pages">Pages</a>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Sections">Sections</a>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Documentation">Documentation</a>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="footer-heading">Technical</h6>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Bootstrap 5">Bootstrap 5</a>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Changelog">Changelog</a>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Theme Customizer">Theme Customizer</a>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط UI Kit">UI Kit</a>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="footer-heading">Includes</h6>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Utilities">Utilities</a>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Components">Components</a>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Layouts">Layouts</a>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Code Samples">Code Samples</a>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="footer-heading">Legal</h6>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Privacy Policy">Privacy Policy</a>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط Terms and Conditions">Terms and Conditions</a>
+                    <a href="#" class="footer-link interactive-btn" data-action="رابط License">License</a>
+                </div>
+            </div>
+            
+            <hr class="mb-4" style="border-color: #d8dbe0;">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <span class="text-muted text-sm">Copyright &copy; SB UI Kit Pro 2026</span>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-muted text-decoration-none me-3 text-sm interactive-btn" data-action="Privacy Policy">Privacy Policy</a>
+                    <a href="#" class="text-muted text-decoration-none text-sm interactive-btn" data-action="Terms & Conditions">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper (Bundle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Interactive Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // Initialize Toast Element
+            const toastEl = document.getElementById('interactionToast');
+            const toast = new bootstrap.Toast(toastEl, {
+                delay: 3000 // Toast disappears after 3 seconds
+            });
+            const toastMessage = document.getElementById('toastMessage');
+
+            // Find all elements with the 'interactive-btn' class
+            const interactives = document.querySelectorAll('.interactive-btn');
+
+            interactives.forEach(element => {
+                element.addEventListener('click', function(e) {
+                    // Prevent default action (like following a # link) to show the interaction
+                    e.preventDefault();
+                    
+                    // Get the action text we set in data-action attribute, or fallback text
+                    const actionName = this.getAttribute('data-action') || 'هذا العنصر';
+                    
+                    // Update toast text and show
+                    toastMessage.textContent = 'رائع! قمت بالضغط على: ' + actionName;
+                    toast.show();
+                    
+                    // Animation effect for the clicked element
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Add subtle shadow to navbar on scroll
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 10) {
+                    navbar.classList.add('shadow');
+                    navbar.classList.remove('shadow-sm');
+                } else {
+                    navbar.classList.remove('shadow');
+                    navbar.classList.add('shadow-sm');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
